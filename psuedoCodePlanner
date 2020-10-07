@@ -1,0 +1,16 @@
+Overview- This app will allow the user to save events on a daily planner for work hours. This will highlight the timeslots based on past, future, and present events. It will also allow the user to change the text to different values and save it in local storage.
+
+we will utilize the moment.js library to work with the date and time. [Moment.js](https://momentjs.com/)
+
+current day will display at the top of the calendar under a simple app for scheduling your work day (target p tag #currentDay)
+
+there will be timeblocks below the day for standard work hours 9-5
+past events will show grey
+present events will show red
+future events will show green
+
+when the box is clicked the user can then enter their new event. 
+The save button will take the user entered text and store it in local storage
+you can refresh the page and still see the user events
+
+
