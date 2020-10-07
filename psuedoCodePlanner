@@ -4,7 +4,7 @@ we will utilize the moment.js library to work with the date and time. [Moment.js
 
 current day will display at the top of the calendar under a simple app for scheduling your work day (target p tag #currentDay)
 
-there will be timeblocks below the day for standard work hours 9-5  (target #timeblock-container) format - Day, Month Date
+there will be timeblocks below the day for standard work hours 9-5  (target .timeblock-container) format - Day, Month Date
 past events will show grey (.past)
 present events will show red(.present)
 future events will show green(.future)
