@@ -4,13 +4,23 @@ we will utilize the moment.js library to work with the date and time. [Moment.js
 
 current day will display at the top of the calendar under a simple app for scheduling your work day (target p tag #currentDay)
 
-there will be timeblocks below the day for standard work hours 9-5
-past events will show grey
-present events will show red
-future events will show green
+there will be timeblocks below the day for standard work hours 9-5  (target #timeblock-container) format - Day, Month Date
+past events will show grey (.past)
+present events will show red(.present)
+future events will show green(.future)
 
 when the box is clicked the user can then enter their new event. 
 The save button will take the user entered text and store it in local storage
 you can refresh the page and still see the user events
 
 
+calendar()  this will make moment.js show as calendar friendly lingo
+diff() this is used to tell the difference between a time
+
+
+classes to add to created elements
+timeblock = .time-block
+
+save button =  .saveBtn
+
+hour of timeslot = .hour
