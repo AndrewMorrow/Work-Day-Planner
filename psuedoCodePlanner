@@ -24,3 +24,11 @@ timeblock = .time-block
 save button =  .saveBtn
 
 hour of timeslot = .hour
+
+<div class="row time-block">
+    <div class="col-md-1 hour">9AM</div>
+    <textarea class="col-md-10 description past"></textarea>
+    <button class="col-md-1 btn saveBtn">
+    <i class="fas fa-save"></i>
+    </button>
+</div>
