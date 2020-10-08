@@ -5,7 +5,7 @@ const dateFormat = m.format("dddd, MMMM Do");
 // var dayStartHour = moment(9, "hours").format("hA");
 var dayStartHour = m.set("h", 9).set("m", 0).set("s", 0);
 var workHours = 8;
-
+var textSection;
 // var hour = moment().get("hour");
 // var day = moment().get("day");
 // var year = moment().get("year");
@@ -22,6 +22,7 @@ for (let i = 0; i <= workHours; i++) {
 
     setTimeBlock();
     dayStartHour.add(1, "h");
+    setEventValues();
 }
 
 function setTimeBlock() {
@@ -29,16 +30,16 @@ function setTimeBlock() {
     var hourSection = $(
         "<div class = 'col-md-1 hour'>" + dayStartHour.format("hA") + "</div>"
     );
-    var textSection = $("<textarea class = 'col-md-10 textarea'>");
+    var textSection = $("<textarea class = 'col-md-10 description'>");
     var saveBtn = $("<button class= 'col-md-1 btn saveBtn'>");
     var saveIcon = $("<i class = 'fas fa-save'>");
 
     if (dayStartHour.hour() === moment().get("h")) {
-        textSection.attr("class", "present");
+        textSection.attr("class", "present col-md-10 description");
     } else if (dayStartHour.hour() > moment().get("h")) {
-        textSection.attr("class", "future");
+        textSection.attr("class", "future col-md-10 description");
     } else {
-        textSection.attr("class", "past");
+        textSection.attr("class", "past col-md-10 description");
     }
     timeBlockContainer.append(row);
     $(row).append(hourSection);
@@ -47,12 +48,24 @@ function setTimeBlock() {
     $(saveBtn).append(saveIcon);
 }
 
-$(".saveBtn").on("click", saveEvent);
-
+$("button").on("click", saveEvent);
 function saveEvent(e) {
     e.preventDefault();
     console.log("clicked");
+    var descriptionTextArea = $("textarea");
+    newEvent = descriptionTextArea.val().trim();
+    if (newEvent === "") {
+        console.log("oops");
+        console.log(newEvent);
+        return;
+    }
+    console.log(newEvent);
+    localStorage.setItem("Event", newEvent);
 }
 
+function setEventValues() {
+    // newEvent = $("textarea").value;
+    newEvent = localStorage.getItem("Event") || "";
+}
 // this is how our date should appear
 // console.log(m.format("dddd, MMMM Do"));
