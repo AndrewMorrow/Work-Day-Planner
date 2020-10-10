@@ -40,14 +40,19 @@ function setTimeBlock() {
     $(saveBtn).append(saveIcon);
 }
 
-$("i").on("click", saveEvent);
+$("button").add("i").on("click", saveEvent);
 function saveEvent(e) {
     e.preventDefault();
-    var storageName = e.target.parentNode.previousElementSibling.value; /**/
-    console.log(storageName);
-    var storageValue = e.target.parentNode.previousElementSibling.dataset.time;
-    console.log(storageValue);
-    localStorage.setItem(storageValue, storageName);
+    if ($(e.target).is("i")) {
+        var storageName = e.target.parentNode.previousElementSibling.value;
+        var storageValue =
+            e.target.parentNode.previousElementSibling.dataset.time;
+        localStorage.setItem(storageValue, storageName);
+    } else {
+        var storageName = e.target.previousElementSibling.value;
+        var storageValue = e.target.previousElementSibling.dataset.time;
+        localStorage.setItem(storageValue, storageName);
+    }
 }
 
 function setEventValues() {
