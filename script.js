@@ -9,14 +9,17 @@ currentDay.text(dateFormat);
 var dayofWeek = moment().weekday();
 var storedDay = localStorage.getItem("day");
 
+// checks if a new day and clears storage if it is
 clearCheck(dayofWeek);
 
+// this calls our html and storage functions to load page
 for (let i = 0; i <= workHours; i++) {
     // console.log(dayofWeek);
     setTimeBlock();
     setEventValues();
     dayStartHour.add(1, "h");
 }
+// sets up html elements
 function setTimeBlock() {
     var row = $("<div class= 'row time-block mb-4'>");
     var hourSection = $(
@@ -24,15 +27,17 @@ function setTimeBlock() {
             dayStartHour.format("hA") +
             "</div>"
     );
-
+    // sets text fields
     var textSection = $(
         `<textarea class = 'col-md-10 col-sm-6 col-xs-1 description' data-time="${dayStartHour.format(
             "hA"
         )}"> `
     );
+    // sets up save button
     var saveBtn = $("<button class= 'col-md-1 col-sm-2 col-xs-1 btn saveBtn'>");
+    // sets up save icon
     var saveIcon = $("<i class = 'fas fa-save'>");
-
+    // these statements check the hour and sets highlighting
     if (dayStartHour.hour() === moment().get("h")) {
         textSection.attr(
             "class",
@@ -49,6 +54,7 @@ function setTimeBlock() {
             "past col-md-10 col-sm-7 col-xs-1 description"
         );
     }
+    // appends the elements to the page
     timeBlockContainer.append(row);
     $(row).append(hourSection);
     $(row).append(textSection);
@@ -56,14 +62,15 @@ function setTimeBlock() {
     $(saveBtn).append(saveIcon);
 }
 
+// Listens for the button or icon to be clicked and saves the textfield into local storage
 $("button").add("i").on("click", saveEvent);
 function saveEvent(e) {
     e.preventDefault();
     if (e.target.parentNode.previousElementSibling.value === "") {
         return;
     }
+    // stores setDay so we can compare it to a new day when page loads
     var setDay = moment().weekday();
-    console.log(setDay);
     if ($(e.target).is("i")) {
         var storageName = e.target.parentNode.previousElementSibling.value;
         var storageValue =
@@ -77,7 +84,7 @@ function saveEvent(e) {
         localStorage.setItem("day", setDay);
     }
 }
-
+// this grabs the text from local storage
 function setEventValues() {
     for (j = 0; j < document.querySelectorAll(" .row > textarea").length; j++) {
         var searchItem = document.querySelectorAll(
@@ -88,7 +95,7 @@ function setEventValues() {
         ].value = localStorage.getItem(searchItem);
     }
 }
-
+// clear storage if it is a new day
 function clearCheck(day) {
     if (day != storedDay) {
         localStorage.clear();

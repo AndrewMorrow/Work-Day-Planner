@@ -2,9 +2,9 @@
 
 # #Description
 
-This is a 9AM-5PM work day planner
+This is a 9AM-5PM work day planner.
 
-It has highlighting buit in for ease of tracking events.
+It has highlighting built in for ease of tracking events.
 Past events will be in grey blocks.
 Present events will be in red blocks.
 Future events will be in green blocks.
