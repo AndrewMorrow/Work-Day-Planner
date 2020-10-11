@@ -6,8 +6,13 @@ var dayStartHour = m.set("h", 9).set("m", 0).set("s", 0);
 var workHours = 8;
 var textSection;
 currentDay.text(dateFormat);
+var dayofWeek = moment().weekday();
+var storedDay = localStorage.getItem("day");
+
+clearCheck(dayofWeek);
 
 for (let i = 0; i <= workHours; i++) {
+    // console.log(dayofWeek);
     setTimeBlock();
     setEventValues();
     dayStartHour.add(1, "h");
@@ -54,15 +59,22 @@ function setTimeBlock() {
 $("button").add("i").on("click", saveEvent);
 function saveEvent(e) {
     e.preventDefault();
+    if (e.target.parentNode.previousElementSibling.value === "") {
+        return;
+    }
+    var setDay = moment().weekday();
+    console.log(setDay);
     if ($(e.target).is("i")) {
         var storageName = e.target.parentNode.previousElementSibling.value;
         var storageValue =
             e.target.parentNode.previousElementSibling.dataset.time;
         localStorage.setItem(storageValue, storageName);
+        localStorage.setItem("day", setDay);
     } else {
         var storageName = e.target.previousElementSibling.value;
         var storageValue = e.target.previousElementSibling.dataset.time;
         localStorage.setItem(storageValue, storageName);
+        localStorage.setItem("day", setDay);
     }
 }
 
@@ -74,5 +86,11 @@ function setEventValues() {
         document.querySelectorAll("body > div > div > textarea")[
             j
         ].value = localStorage.getItem(searchItem);
+    }
+}
+
+function clearCheck(day) {
+    if (day != storedDay) {
+        localStorage.clear();
     }
 }
