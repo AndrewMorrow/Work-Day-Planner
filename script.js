@@ -13,25 +13,36 @@ for (let i = 0; i <= workHours; i++) {
     dayStartHour.add(1, "h");
 }
 function setTimeBlock() {
-    var row = $("<div class= 'row time-block'>");
+    var row = $("<div class= 'row time-block mb-4'>");
     var hourSection = $(
-        "<div class = 'col-md-1 hour'>" + dayStartHour.format("hA") + "</div>"
+        "<div class = 'col-md-1 col-sm-2 col-xs-1 hour'>" +
+            dayStartHour.format("hA") +
+            "</div>"
     );
 
     var textSection = $(
-        `<textarea class = 'col-md-10 description' data-time="${dayStartHour.format(
+        `<textarea class = 'col-md-10 col-sm-6 col-xs-1 description' data-time="${dayStartHour.format(
             "hA"
         )}"> `
     );
-    var saveBtn = $("<button class= 'col-md-1 btn saveBtn'>");
+    var saveBtn = $("<button class= 'col-md-1 col-sm-2 col-xs-1 btn saveBtn'>");
     var saveIcon = $("<i class = 'fas fa-save'>");
 
     if (dayStartHour.hour() === moment().get("h")) {
-        textSection.attr("class", "present col-md-10 description");
+        textSection.attr(
+            "class",
+            "present col-md-10 col-sm-7 col-xs-1 description"
+        );
     } else if (dayStartHour.hour() > moment().get("h")) {
-        textSection.attr("class", "future col-md-10 description");
+        textSection.attr(
+            "class",
+            "future col-md-10 col-sm-7 col-xs-1 description"
+        );
     } else {
-        textSection.attr("class", "past col-md-10 description");
+        textSection.attr(
+            "class",
+            "past col-md-10 col-sm-7 col-xs-1 description"
+        );
     }
     timeBlockContainer.append(row);
     $(row).append(hourSection);
