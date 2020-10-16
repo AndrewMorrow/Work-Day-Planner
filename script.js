@@ -29,7 +29,7 @@ function setTimeBlock() {
     );
     // sets text fields
     var textSection = $(
-        `<textarea class = 'col-md-10 col-sm-6 col-xs-1 description' data-time="${dayStartHour.format(
+        `<textarea class = 'col-md-9 col-sm-6 col-xs-1 description' data-time="${dayStartHour.format(
             "hA"
         )}"> `
     );

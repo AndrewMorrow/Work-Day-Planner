@@ -19,6 +19,7 @@ textarea {
     color: black;
     border-radius: 0;
     border-bottom: 10px solid black;
+    padding: 20px;
 }
 
 .description {
@@ -28,6 +29,10 @@ textarea {
 .time-block {
     text-align: center;
     border-radius: 15px;
+}
+.timeblock-container {
+    margin-left: 2rem;
+    margin-right: 2rem;
 }
 
 .row {
