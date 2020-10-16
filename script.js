@@ -63,12 +63,9 @@ function setTimeBlock() {
 }
 
 // Listens for the button or icon to be clicked and saves the textfield into local storage
-$("button").add("i").on("click", saveEvent);
+$(document).on("click", "button", "i", saveEvent);
 function saveEvent(e) {
     e.preventDefault();
-    if (e.target.parentNode.previousElementSibling.value === "") {
-        return;
-    }
     // stores setDay so we can compare it to a new day when page loads
     var setDay = moment().weekday();
     if ($(e.target).is("i")) {

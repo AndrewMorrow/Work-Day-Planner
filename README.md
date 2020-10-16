@@ -14,5 +14,3 @@ Your saved events will persist on refresh.
 Link to github pages: https://andrewmorrow.github.io/Work-Day-Planner/
 
 <img src="assets\workDayPlannerScreenshot.png">
-
-test

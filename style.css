@@ -50,11 +50,13 @@ textarea {
 
 .present {
     background-color: #ff6961;
+    font-weight: bold;
     color: black;
 }
 
 .future {
     background-color: #77dd77;
+    font-weight: bold;
     color: black;
 }
 
